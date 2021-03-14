@@ -28,7 +28,12 @@ module.exports = {
         test: /\.jsx$/, // $ determina oque deve terminar \. aceitar o ponto jsx é a extenção
         exclude: /node_modules/, // não efetuar o processo de conversão, pois é a responsabilidade de cada biblioteca
         use: 'babel-loader',
-      }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   }
 };
