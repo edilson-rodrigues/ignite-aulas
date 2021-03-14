@@ -11,6 +11,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'], // tipo de arquivos utilizados para conversão
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'), // responsavel na observações de alterações e mudanças
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
