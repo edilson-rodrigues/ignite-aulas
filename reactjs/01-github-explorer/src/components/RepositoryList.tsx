@@ -5,8 +5,14 @@ import '../styles/repositories.scss';
 
 const URL = 'https://api.github.com/users/edilson-rodrigues/repos';
 
+interface Repository {
+  name: string,
+  description: string,
+  html_url: string,
+}
+
 export function RepositoryList() {
-  const [repositories, setRepositories] = React.useState([]);
+  const [repositories, setRepositories] = React.useState<Repository[]>([]);
 
   React.useEffect(() => {
     fetch(URL)
@@ -20,7 +26,7 @@ export function RepositoryList() {
 
       <ul>
         {repositories.map((repository) => {
-          return <RepositoryItem key={repository.id} repository={repository} />
+          return <RepositoryItem key={repository.name} repository={repository} />
         })}
       </ul>
     </section>
