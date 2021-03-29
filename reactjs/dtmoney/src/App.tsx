@@ -1,15 +1,13 @@
-import styled from "styled-components";
-
-const Title = styled.h1`
-    color: #8257e6;
-`
+import {GlobalStyle} from "./styles/global";
+import {Header} from "./component/Header";
 
 export function App() {
-  return (
-    <div className="App">
-      <Title>Hello World</Title>
-    </div>
-  );
+    return (
+        <>
+            <Header/>
+            <GlobalStyle/>
+        </>
+    );
 }
 
 export default App;
