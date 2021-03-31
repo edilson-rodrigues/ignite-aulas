@@ -8,7 +8,9 @@ import React from "react";
 
 export function Summary() {
 
-    const data = React.useContext(TransactionsContext);
+    const { transactions} = React.useContext(TransactionsContext);
+
+    console.log(transactions);
 
     return (
         <Container>
