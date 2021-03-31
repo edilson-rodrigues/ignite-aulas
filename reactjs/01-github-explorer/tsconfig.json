@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom", // traz tipagem e atributos que existe na arvore de elementos - dom
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true, // poderemos usar tando js ou ts, recomendado para transição
+    "jsx": "react-jsx", // para interpretação do html dentro do js
+    "noEmit": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true, // a possibilidade de importar arquivos json
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [ // informando o diretorio com os arquivos ts
+    "src"
+  ]
+}
