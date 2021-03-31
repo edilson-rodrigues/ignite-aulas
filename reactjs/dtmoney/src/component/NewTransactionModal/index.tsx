@@ -14,9 +14,13 @@ interface NewTransactionModalProps {
     onRequestClose: () => void;
 }
 
-export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
-    const [type, setType] = React.useState<'withdraw' | 'deposit'>('deposit');
+enum typeNewTransactionModal{
+    withdraw = 'withdraw',
+    deposit = 'deposit',
+}
 
+export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
+    const [type, setType] = React.useState<typeNewTransactionModal>(typeNewTransactionModal.deposit);
 
     return (
         <Modal
@@ -45,16 +49,18 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
                 <TransactionTypeContainer>
                     <RadioBox
                         type="button"
-                        onClick={()=>{setType('deposit')}}
-                        isActive={type === 'deposit'}
+                        onClick={()=>{setType(typeNewTransactionModal.deposit)}}
+                        isActive={type === typeNewTransactionModal.deposit}
+                        activeColor={typeNewTransactionModal.deposit}
                     >
                         <img src={incomeImg} alt="Entrada"/>
                         <span>Entrada</span>
                     </RadioBox>
                     <RadioBox
                         type="button"
-                        onClick={()=>{setType('withdraw')}}
-                        isActive={type === 'withdraw'}
+                        onClick={()=>{setType(typeNewTransactionModal.withdraw)}}
+                        isActive={type === typeNewTransactionModal.withdraw}
+                        activeColor={typeNewTransactionModal.withdraw}
                     >
                         <img src={outcomeImg} alt="Saída"/>
                         <span>Saída</span>
