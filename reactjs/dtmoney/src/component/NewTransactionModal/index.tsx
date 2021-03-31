@@ -10,7 +10,7 @@ import {
     TransactionTypeContainer,
     RadioBox,
 } from './styles';
-import {TransactionsContext} from "../../TransactionsContext";
+import {useTransactions} from "../../hooks/useTransactions";
 
 interface NewTransactionModalProps {
     isOpen: boolean;
@@ -23,7 +23,7 @@ enum typeNewTransactionModal {
 }
 
 export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
-    const {createTransaction} = React.useContext(TransactionsContext);
+    const {createTransaction} = useTransactions();
 
     const [title, setTitle] = React.useState('');
     const [amount, setAmount] = React.useState(0);

@@ -1,14 +1,14 @@
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
-import {TransactionsContext} from '../../TransactionsContext';
 
 import {Container} from "./styles";
 import React from "react";
+import {useTransactions} from "../../hooks/useTransactions";
 
 export function Summary() {
 
-    const {transactions} = React.useContext(TransactionsContext);
+    const {transactions} = useTransactions();
 
     const acc = {
         deposits: 0,

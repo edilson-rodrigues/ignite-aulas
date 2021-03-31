@@ -1,4 +1,4 @@
-import {api} from "./services/api";
+import {api} from "../services/api";
 import React from "react";
 
 interface Transactions {
@@ -30,7 +30,7 @@ interface TransactionsContextData {
 }
 
 const defaultValue = {} as TransactionsContextData;
-export const TransactionsContext = React.createContext<TransactionsContextData>(defaultValue);
+const TransactionsContext = React.createContext<TransactionsContextData>(defaultValue);
 
 export function TransactionsProvider({children} :TransactionsProviderProps){
     const [transactions, setTransactions] = React.useState<Transactions[]>([])
@@ -59,4 +59,8 @@ export function TransactionsProvider({children} :TransactionsProviderProps){
     }}>
         {children}
     </TransactionsContext.Provider>
+}
+
+export function useTransactions(){
+    return React.useContext(TransactionsContext);
 }
