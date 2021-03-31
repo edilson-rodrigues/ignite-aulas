@@ -6,7 +6,7 @@ to install the dependencies
 
 * to run the application, ```yarn start```
 
-###technologies used
+### technologies used
 * axios
 * miragejs
 * polished
