@@ -8,26 +8,35 @@ import {
     TransactionTypeContainer,
     RadioBox,
 } from './styles';
+import {api} from "../../services/api";
+
 interface NewTransactionModalProps {
     isOpen: boolean;
     onRequestClose: () => void;
 }
 
-enum typeNewTransactionModal{
+enum typeNewTransactionModal {
     withdraw = 'withdraw',
     deposit = 'deposit',
 }
 
 export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModalProps) {
-    const [title, setTitle]=React.useState('');
-    const [value, setValue]=React.useState(0);
-    const [category, setCategory]=React.useState('');
+    const [title, setTitle] = React.useState('');
+    const [value, setValue] = React.useState(0);
+    const [category, setCategory] = React.useState('');
     const [type, setType] = React.useState<typeNewTransactionModal>(typeNewTransactionModal.deposit);
 
-    function handleCreateNewTransaction(event: FormEvent){
+    function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
-        console.log('form', {title, value, category, type});
+        const data = {
+            title,
+            value,
+            category,
+            type,
+        };
+
+        api.post('/transactions', data);
     }
 
     return (
@@ -61,7 +70,9 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
                 <TransactionTypeContainer>
                     <RadioBox
                         type="button"
-                        onClick={()=>{setType(typeNewTransactionModal.deposit)}}
+                        onClick={() => {
+                            setType(typeNewTransactionModal.deposit)
+                        }}
                         isActive={type === typeNewTransactionModal.deposit}
                         activeColor={typeNewTransactionModal.deposit}
                     >
@@ -70,7 +81,9 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
                     </RadioBox>
                     <RadioBox
                         type="button"
-                        onClick={()=>{setType(typeNewTransactionModal.withdraw)}}
+                        onClick={() => {
+                            setType(typeNewTransactionModal.withdraw)
+                        }}
                         isActive={type === typeNewTransactionModal.withdraw}
                         activeColor={typeNewTransactionModal.withdraw}
                     >
